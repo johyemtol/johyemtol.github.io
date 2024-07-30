@@ -23,18 +23,18 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./  # package.json이 루트 디렉토리에 있는 경우
+      working-directory: ./  # 루트 디렉토리에서 실행
 
     - name: Build the project
       run: npm run build
-      working-directory: ./  # package.json이 루트 디렉토리에 있는 경우
+      working-directory: ./  # 루트 디렉토리에서 실행
 
     - name: Inject API Key
       run: |
         echo "export const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
       shell: bash
-      working-directory: ./  # package.json이 루트 디렉토리에 있는 경우
+      working-directory: ./  # 루트 디렉토리에서 실행
 
     - name: Deploy
       run: npm run deploy
-      working-directory: ./  # package.json이 루트 디렉토리에 있는 경우
+      working-directory: ./  # 루트 디렉토리에서 실행

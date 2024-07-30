@@ -26,18 +26,22 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./  # 루트 디렉토리에서 실행
+      # 'working-directory'를 생략하거나 올바른 디렉토리 설정을 추가할 수 있습니다.
+      # working-directory: ./  # 루트 디렉토리에서 실행 (기본 설정)
 
     - name: Build the project
       run: npm run build
-      working-directory: ./  # 루트 디렉토리에서 실행
+      # 'working-directory'를 생략하거나 올바른 디렉토리 설정을 추가할 수 있습니다.
+      # working-directory: ./  # 루트 디렉토리에서 실행 (기본 설정)
 
     - name: Inject API Key
       run: |
         echo "export const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
       shell: bash
-      working-directory: ./  # 루트 디렉토리에서 실행
+      # 'working-directory'를 생략하거나 올바른 디렉토리 설정을 추가할 수 있습니다.
+      # working-directory: ./  # 루트 디렉토리에서 실행 (기본 설정)
 
     - name: Deploy
       run: npm run deploy
-      working-directory: ./  # 루트 디렉토리에서 실행
+      # 'working-directory'를 생략하거나 올바른 디렉토리 설정을 추가할 수 있습니다.
+      # working-directory: ./  # 루트 디렉토리에서 실행 (기본 설정)

@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -26,8 +26,9 @@ jobs:
 
     - name: Inject API Key
       run: |
-        echo "const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
+        echo "export const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
       shell: bash
 
     - name: Deploy
       run: npm run deploy
+

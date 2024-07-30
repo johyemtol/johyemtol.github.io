@@ -3,12 +3,11 @@ const fetch = require('node-fetch');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // JSON 데이터 처리
+app.use(express.json());
 
-const apiKey = process.env.OPENAI_API_KEY; // 환경 변수에서 API 키 읽기
+const apiKey = process.env.OPENAI_API_KEY;
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
-// 클라이언트의 요청을 OpenAI API에 전달
 app.post('/api/chat', async (req, res) => {
     const prompt = req.body.prompt;
 
@@ -20,8 +19,8 @@ app.post('/api/chat', async (req, res) => {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: prompt }],
+                model: 'gpt-3.5-turbo',
+                messages: [{ role: 'user', content: prompt }],
                 temperature: 0.8,
                 max_tokens: 1024
             })

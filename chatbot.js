@@ -12,7 +12,7 @@ function addMessage(sender, message) {
 
 async function fetchAIResponse(prompt) {
     const requestOptions = {
-        method: 'GET', // POST 메서드 사용
+        method: 'POST', // POST 메서드 사용
         headers: {
             'Content-Type': 'application/json',
         },
@@ -48,3 +48,4 @@ userInput.addEventListener('keydown', (event) => {
         sendButton.click();
     }
 });
+

@@ -14,7 +14,7 @@ app.post('/api/chat', async (req, res) => {
 
     try {
         const response = await fetch(apiEndpoint, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${apiKey}`

@@ -1,7 +1,7 @@
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiEndpoint = '/api/chat'; // 서버의 엔드포인트
+const apiEndpoint = '/api/chat';
 
 function addMessage(sender, message) {
     const messageElement = document.createElement('div');
@@ -16,7 +16,7 @@ async function fetchAIResponse(prompt) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt }) // 서버에 보낼 데이터
+        body: JSON.stringify({ prompt })
     };
 
     try {
@@ -27,7 +27,7 @@ async function fetchAIResponse(prompt) {
         }
 
         const data = await response.json();
-        return data.content; // 서버의 응답에서 메시지 콘텐츠 추출
+        return data.content;
     } catch (error) {
         console.error('서버 호출 중 오류 발생:', error);
         return '서버 호출 중 오류 발생';

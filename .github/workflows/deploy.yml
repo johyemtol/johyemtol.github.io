@@ -20,15 +20,19 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./johyemtol.github.io/pakage.json
 
     - name: Build the project
       run: npm run build
+      working-directory: ./johyemtol.github.io/pakage.json
 
     - name: Inject API Key
       run: |
         echo "export const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
       shell: bash
+      working-directory: ./johyemtol.github.io/pakage.json
 
     - name: Deploy
       run: npm run deploy
+      working-directory: ./johyemtol.github.io/pakage.json
 

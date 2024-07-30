@@ -1,9 +1,7 @@
-import { apiKey } from './apiKey';
-
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
+const apiEndpoint = '/api/chat'; // 서버 프록시 엔드포인트
 
 function addMessage(sender, message) {
     const messageElement = document.createElement('div');
@@ -16,22 +14,9 @@ async function fetchAIResponse(prompt) {
     const requestOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [{
-                role: "user",
-                content: prompt
-            }],
-            temperature: 0.8,
-            max_tokens: 1024,
-            top_p: 1,
-            frequency_penalty: 0.5,
-            presence_penalty: 0.5,
-            stop: ["Human"],
-        }),
+        body: JSON.stringify({ prompt }),
     };
 
     try {
@@ -40,8 +25,8 @@ async function fetchAIResponse(prompt) {
         const aiResponse = data.choices[0].message.content;
         return aiResponse;
     } catch (error) {
-        console.error('OpenAI API 호출 중 오류 발생:', error);
-        return 'OpenAI API 호출 중 오류 발생';
+        console.error('서버 호출 중 오류 발생:', error);
+        return '서버 호출 중 오류 발생';
     }
 }
 

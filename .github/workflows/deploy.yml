@@ -16,6 +16,9 @@ jobs:
     - name: List directory structure
       run: ls -R
 
+    - name: Ensure src directory exists
+      run: mkdir -p ./src
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:

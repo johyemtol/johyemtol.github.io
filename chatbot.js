@@ -12,11 +12,17 @@ function addMessage(sender, message) {
 
 async function fetchAIResponse(prompt) {
     const requestOptions = {
-        method: 'POST', // POST 메서드 사용
+        method: 'POST',  // POST 메소드 설정
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
         },
-        body: JSON.stringify({ prompt }) // 요청 본문에 프롬프트 포함
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.8,
+            max_tokens: 1024
+        })
     };
 
     try {
@@ -27,7 +33,7 @@ async function fetchAIResponse(prompt) {
         }
 
         const data = await response.json();
-        return data.content; // 응답에서 챗봇의 답변 가져오기
+        return data.choices[0].message.content;
     } catch (error) {
         console.error('서버 호출 중 오류 발생:', error);
         return '서버 호출 중 오류 발생';

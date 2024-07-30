@@ -12,7 +12,7 @@ function addMessage(sender, message) {
 
 async function fetchAIResponse(prompt) {
     const requestOptions = {
-        method: 'POST', // POST 메서드 사용
+        method: 'GET', // POST 메서드 사용
         headers: {
             'Content-Type': 'application/json',
         },

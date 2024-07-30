@@ -1,7 +1,9 @@
+import { apiKey } from './apiKey.js';
+
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiEndpoint = '/api/chat'; // 서버 프록시 엔드포인트
+const apiEndpoint = 'https://api.example.com/api/chat'; // 올바른 API 엔드포인트 확인
 
 function addMessage(sender, message) {
     const messageElement = document.createElement('div');
@@ -41,7 +43,6 @@ async function fetchAIResponse(prompt) {
         return '서버 호출 중 오류 발생';
     }
 }
-
 
 sendButton.addEventListener('click', async () => {
     const message = userInput.value.trim();

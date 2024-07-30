@@ -14,21 +14,34 @@ async function fetchAIResponse(prompt) {
     const requestOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}` // API 키를 헤더에 포함
         },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.8,
+            max_tokens: 1024
+        })
     };
 
     try {
         const response = await fetch(apiEndpoint, requestOptions);
+
+        // 응답 상태 코드 확인
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // JSON 응답 파싱
         const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-        return aiResponse;
+        return data.choices[0].message.content;
     } catch (error) {
         console.error('서버 호출 중 오류 발생:', error);
         return '서버 호출 중 오류 발생';
     }
 }
+
 
 sendButton.addEventListener('click', async () => {
     const message = userInput.value.trim();

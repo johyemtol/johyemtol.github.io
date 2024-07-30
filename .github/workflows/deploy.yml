@@ -20,19 +20,18 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./johyemtol.github.io/pakage.json
+      working-directory: ./johyemtol.github.io  # 여기를 실제 package.json이 있는 디렉토리로 설정하세요
 
     - name: Build the project
       run: npm run build
-      working-directory: ./johyemtol.github.io/pakage.json
+      working-directory: ./johyemtol.github.io  # 여기를 실제 package.json이 있는 디렉토리로 설정하세요
 
     - name: Inject API Key
       run: |
         echo "export const apiKey = '${{ secrets.OPENAI_API_KEY }}';" > ./src/apiKey.js
       shell: bash
-      working-directory: ./johyemtol.github.io/pakage.json
+      working-directory: ./johyemtol.github.io  # 여기를 실제 package.json이 있는 디렉토리로 설정하세요
 
     - name: Deploy
       run: npm run deploy
-      working-directory: ./johyemtol.github.io/pakage.json
-
+      working-directory: ./johyemtol.github.io  # 여기를 실제 package.json이 있는 디렉토리로 설정하세요

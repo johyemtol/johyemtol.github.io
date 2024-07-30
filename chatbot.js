@@ -3,7 +3,7 @@ import { apiKey } from './apiKey.js';
 const chatMessages = document.querySelector('#chat-messages');
 const userInput = document.querySelector('#user-input input');
 const sendButton = document.querySelector('#user-input button');
-const apiEndpoint = 'https://api.example.com/api/chat'; // 올바른 API 엔드포인트 확인
+const apiEndpoint = 'https://johyemtol.github.io/semi'; // 올바른 API 엔드포인트 확인
 
 function addMessage(sender, message) {
     const messageElement = document.createElement('div');
